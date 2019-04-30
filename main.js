@@ -1,4 +1,4 @@
-﻿$(function(){
+$(function(){
   
     var scene, camera, renderer;
     var controls;
@@ -14,6 +14,7 @@
 
     function init(){
       
+	
         scene = new THREE.Scene();
         camera =  new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 15000);
         renderer = new THREE.WebGLRenderer({antialias:true});
@@ -35,7 +36,8 @@
         camera.position.z = 700;
         camera.lookAt(scene.position);
 		//
-		var starsGeometry = new THREE.Geometry();
+
+var starsGeometry = new THREE.Geometry();
 		var starsMaterial = new THREE.ParticleBasicMaterial({color:0xe6e6fa,sice:3,
 		sizeAttenuation:true});
 		var stars;
@@ -51,7 +53,6 @@
 		stars = new THREE.ParticleSystem(starsGeometry,starsMaterial);
 		stars.scale.set(30,30,30);
 		scene.add(stars);
-
         /*Солнце*/		
         var Box_material = new THREE.MeshBasicMaterial( {wireframe: true,
             
@@ -139,6 +140,8 @@
     function render() {}
 
     function animate(){
+
+
         requestAnimationFrame(animate);
 		cube.rotation.y+=0.004;
 		earth.rotation.y+= 0.04;
