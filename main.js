@@ -13,7 +13,37 @@
 	var t=0;
 
     function init(){
-     
+      
+	    var ambient = new THREE.AmbientLight( 0x404040 );
+        scene.add( ambient );
+
+        spotLight = new THREE.SpotLight( 0xffffff );
+        spotLight.position.set( 10, 10, 15 );
+        spotLight.castShadow = true;
+        spotLight.shadowCameraNear = 8;
+        spotLight.shadowCameraFar = 30;
+        spotLight.shadowDarkness = 0.5;
+        spotLight.shadowCameraVisible = false;
+        spotLight.shadowMapWidth = 1024;
+        spotLight.shadowMapHeight = 1024;
+        spotLight.name = 'Spot Light';
+        scene.add( spotLight );
+
+        /*Основание */
+		
+		var starsGeometry = new THREE.Geometry();
+		var starsMaterial = new.ParticleBasicMaterial({color:0xe6e6fa,sice:1,sizeAttenuate:false});
+		var stars;
+		for (var i+0;i<500;i++;{
+			var vertex = new THREE.Vector3();
+			vertex.x = Math.random()*2-1;
+			vertex.y = Math.random()*2-1;
+			vertex.z = Math.random()*2-1;
+			vertex.multipScalar(700);
+			starsGeometry.verticles.push(vertex);
+		}
+		stars = new THREE.ParticleSystem(starsGeometry,starsMaterial);
+		scene.add(stars);
 	
         scene = new THREE.Scene();
         camera =  new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 15000);
